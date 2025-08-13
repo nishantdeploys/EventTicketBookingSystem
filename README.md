@@ -5,18 +5,28 @@
 ```
 EventTicketingPlatform/
 │
-├── src/
-│   ├── main.cpp
-│   ├── Event.h / Event.cpp
-│   ├── User.h / User.cpp
-│   ├── Ticket.h / Ticket.cpp
-│   ├── BookingManager.h / BookingManager.cpp
-│   ├── FileManager.h / FileManager.cpp
+├── bin/
+│   └── EventTicketingPlatform.exe      # Compiled executable
 │
 ├── data/
-│   ├── events.csv
-│   ├── users.csv
-│   ├── tickets.csv
+│   ├── events.csv                      # Event data (empty by default)
+│   ├── users.csv                       # User data (empty by default)
+│   ├── tickets.csv                     # Ticket data (empty by default)
+│
+├── include/
+│   ├── BookingManager.h
+│   ├── Event.h
+│   ├── FileManager.h
+│   ├── Ticket.h
+│   └── User.h
+│
+├── src/
+│   ├── BookingManager.cpp
+│   ├── Event.cpp
+│   ├── FileManager.cpp
+│   ├── main.cpp
+│   ├── Ticket.cpp
+│   └── User.cpp
 │
 ├── README.md
 └── Makefile (or CMakeLists.txt)
@@ -24,9 +34,9 @@ EventTicketingPlatform/
 
 ## Important Data Structures Used
 
-- **std::vector**: Used for storing collections of events, users, and tickets in memory for easy iteration and management.
-- **std::string**: Used for all textual data such as IDs, names, dates, and categories.
-- **std::map** (future upgrade): Can be used for fast lookup of events, users, or tickets by their IDs.
+- **vector**: Used for storing collections of events, users, and tickets in memory for easy iteration and management.
+- **string**: Used for all textual data such as IDs, names, dates, and categories.
+- **map** (future upgrade): Can be used for fast lookup of events, users, or tickets by their IDs.
 
 ## Core Classes
 
