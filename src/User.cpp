@@ -1,5 +1,7 @@
 #include "User.h"
 #include <iostream>
+#include <fstream>
+#include <sstream>
 using namespace std;
 
 User::User() : admin(false) {}
@@ -13,15 +15,20 @@ bool User::login() {
     cin >> pwd;
     cout << "Select role (1-Admin, 2-User): ";
     cin >> role;
-    // TODO: Replace with actual user lookup and password check
-    if (uname == "admin" && pwd == "admin" && role == 1) {
-        admin = true;
-        username = uname;
-        return true;
-    } else if (uname == "user" && pwd == "user" && role == 2) {
-        admin = false;
-        username = uname;
-        return true;
+
+    string filename = (role == 1) ? "../data/admin.csv" : "../data/user.csv";
+    ifstream file(filename);
+    string line;
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string file_uname, file_pwd;
+        getline(ss, file_uname, ',');
+        getline(ss, file_pwd, ',');
+        if (file_uname == uname && file_pwd == pwd) {
+            admin = (role == 1);
+            username = uname;
+            return true;
+        }
     }
     return false;
 }
@@ -35,8 +42,17 @@ void User::registerUser() {
     cin >> pwd;
     cout << "Select role (1-Admin, 2-User): ";
     cin >> role;
-    // TODO: Save user to file/database
-    cout << "Succesfully Registered...!" << uname << " as " << (role == 1 ? "Admin" : "User") << ".\n";
+
+    // Save user to CSV
+    string filename = (role == 1) ? "../data/admin.csv" : "../data/user.csv";
+    ofstream file(filename, ios::app);
+    if (file.is_open()) {
+        file << uname << "," << pwd << "\n";
+        file.close();
+        cout << "Succesfully Registered...!" << uname << " as " << (role == 1 ? "Admin" : "User") << ".\n";
+    } else {
+        cout << "Error: Could not open file for writing.\n";
+    }
 }
 
 bool User::isAdmin() const {
