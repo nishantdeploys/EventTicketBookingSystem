@@ -1,12 +1,31 @@
-
 #include <iostream>
 #include "BookingManager.h"
+#include "User.h"
 using namespace std;
 
 int main() {
     BookingManager manager;
     manager.loadData();
     cout << "Welcome to the Event Ticketing Platform!" << endl;
-    // TODO: Implement menu-driven console UI
+
+    User currentUser;
+    int choice;
+    do {
+        cout << "\n1. Login\n2. Register\n0. Exit\nChoose an option: ";
+        cin >> choice;
+        if (choice == 1) {
+            if (currentUser.login()) {
+                cout << "Login successful as " << (currentUser.isAdmin() ? "Admin" : "User") << "!\n";
+                // TODO: Show admin/user menu based on role
+                break;
+            } else {
+                cout << "Login failed. Try again.\n";
+            }
+        } else if (choice == 2) {
+            currentUser.registerUser();
+        }
+    } while (choice != 0);
+
+    cout << "Goodbye!\n";
     return 0;
 }
