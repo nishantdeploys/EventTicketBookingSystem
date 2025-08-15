@@ -1,6 +1,7 @@
 #include <iostream>
 #include "BookingManager.h"
 #include "User.h"
+#include "Admin.h"
 using namespace std;
 
 int main() {
@@ -16,7 +17,12 @@ int main() {
         if (choice == 1) {
             if (currentUser.login()) {
                 cout << "Login successful as " << (currentUser.isAdmin() ? "Admin" : "User") << "!\n";
-                // TODO: Show admin/user menu based on role
+                if (currentUser.isAdmin()) {
+                    Admin adminUser;
+                    adminUser.showAdminMenu();
+                } else {
+                    currentUser.showUserMenu();
+                }
                 break;
             } else {
                 cout << "Login failed. Try again.\n";
