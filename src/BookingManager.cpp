@@ -1,13 +1,13 @@
 #include "BookingManager.h"
+#include "Ticket.h"
+#include <fstream>
+#include <vector>
 using namespace std;
 
 void BookingManager::loadData() {
     // TODO: Load events, users, tickets from CSV using FileManager
 }
-bool BookingManager::bookTicket(const string& eventID, const string& userID) {
-    // TODO: Implement booking logic
-    return false;
-}
+
 bool BookingManager::cancelTicket(const string& ticketID) {
     // TODO: Implement cancellation logic
     return false;
@@ -42,4 +42,14 @@ void BookingManager::sortEventsByDate() {
 }
 void BookingManager::sortEventsByAvailability() {
     // TODO: Sort logic
+}
+
+bool BookingManager::bookTicket(const std::string& username, int eventId) {
+    // Your booking logic here
+    return true;
+}
+
+std::vector<Ticket> BookingManager::getUserTickets(const std::string& username) {
+    // Your logic here
+    return std::vector<Ticket>();
 }

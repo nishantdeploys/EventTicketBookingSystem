@@ -12,7 +12,7 @@ class BookingManager {
     vector<Ticket> tickets;
 public:
     void loadData();
-    bool bookTicket(const string& eventID, const string& userID);
+    bool bookTicket(const std::string& username, int eventId);
     bool cancelTicket(const string& ticketID);
     Ticket* searchTicketByID(const string& ticketID);
     vector<Ticket> searchTicketsByEventID(const string& eventID);
@@ -23,4 +23,5 @@ public:
     void sortTicketsByBookingOrder();
     void sortEventsByDate();
     void sortEventsByAvailability();
+    std::vector<Ticket> getUserTickets(const std::string& username);
 };

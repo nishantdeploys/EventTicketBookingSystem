@@ -5,33 +5,37 @@
 using namespace std;
 
 int main() {
-    BookingManager manager;
-    manager.loadData();
-    cout << "Welcome to the Event Ticketing Platform!" << endl;
+    cout << "========================================\n";
+    cout << " Welcome to the Event Ticketing Platform\n";
+    cout << "========================================\n";
 
     User currentUser;
     int choice;
     do {
-        cout << "\n1. Login\n2. Register\n0. Exit\nChoose an option: ";
+        cout << "\nPlease choose an option:\n";
+        cout << "1. Login\n";
+        cout << "2. Register\n";
+        cout << "0. Exit\n";
+        cout << "Your choice: ";
         cin >> choice;
+
         if (choice == 1) {
             if (currentUser.login()) {
-                cout << "Login successful as " << (currentUser.isAdmin() ? "Admin" : "User") << "!\n";
+                cout << "\nLogin successful as " << (currentUser.isAdmin() ? "Admin" : "User") << "!\n";
                 if (currentUser.isAdmin()) {
                     Admin adminUser;
                     adminUser.showAdminMenu();
                 } else {
                     currentUser.showUserMenu();
                 }
-                break;
             } else {
-                cout << "Login failed. Try again.\n";
+                cout << "\nLogin failed. Try again.\n";
             }
         } else if (choice == 2) {
             currentUser.registerUser();
         }
     } while (choice != 0);
 
-    cout << "Goodbye!\n";
+    cout << "\nThank you for using the Event Ticketing Platform. Goodbye!\n";
     return 0;
 }

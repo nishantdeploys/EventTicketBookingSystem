@@ -1,23 +1,13 @@
 #pragma once
 #include <string>
-using namespace std;
 
 class Event {
-    string eventID, name, date, venue;
-    int totalSeats, availableSeats;
+    int id;
+    std::string name, date, location;
 public:
-    Event();
-    Event(const string& id, const string& n, const string& d, const string& v, int total, int available);
-    // Getters
-    string getEventID() const;
-    string getName() const;
-    string getDate() const;
-    string getVenue() const;
-    int getTotalSeats() const;
-    int getAvailableSeats() const;
-    // Setters
-    void setAvailableSeats(int seats);
-    // Seat management
-    bool bookSeat();
-    bool cancelSeat();
+    Event(int id, std::string name, std::string date, std::string location);
+    int getId() const { return id; }
+    std::string getName() const { return name; }
+    std::string getDate() const { return date; }
+    std::string getLocation() const { return location; }
 };
