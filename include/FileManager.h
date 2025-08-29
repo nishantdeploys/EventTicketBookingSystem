@@ -14,4 +14,5 @@ public:
     static void saveUsers(const string& filename, const vector<User>& users);
     static vector<Ticket> loadTickets(const string& filename);
     static void saveTickets(const string& filename, const vector<Ticket>& tickets);
+    static bool cancelTicket(const std::string& ticketId);
 };
